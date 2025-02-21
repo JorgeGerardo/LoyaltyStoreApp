@@ -6,6 +6,8 @@ export { BaseModel } from './models/BaseModel';
 
 export { User } from './models/User';
 export { UserLoginDTO } from './models/User';
+export { UserAuth } from './models/User';
+export { Role } from './models/User';
 
 export { Customer } from './models/Customer';
 export { CustomerCreateDto } from './models/Customer';

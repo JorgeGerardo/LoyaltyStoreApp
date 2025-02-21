@@ -17,3 +17,9 @@ export interface UserLoginDTO {
     password: string;
 }
 
+
+export interface UserAuth {
+    token:string;
+    userId:number;
+}
+

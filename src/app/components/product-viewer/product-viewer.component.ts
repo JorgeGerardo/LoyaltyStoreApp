@@ -32,10 +32,7 @@ export class ProductViewerComponent implements OnInit {
 
   loadProducts() {
     this.store.getAll(this.currentPage, this.itemsPerPage)
-      .subscribe(response => {
-        this.products = response;
-        console.log('Productos cargados:', this.products);
-      });
+      .subscribe(response => this.products = response);
   }
 
   goToPage(page: number) {

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from 'src/app/api/models';
+import { Product, ProductCartItem } from 'src/app/api/models';
 import { ProductService } from 'src/app/api/services/product.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product-view',
@@ -13,7 +14,7 @@ export class ProductViewComponent  implements OnInit {
   product:Product | undefined = undefined;
   quantity = 1;
   
-  constructor(private activedRoute:ActivatedRoute, private productService:ProductService){
+  constructor(private activedRoute:ActivatedRoute, private productService:ProductService, private cart:CartService){
     this.activedRoute.paramMap
       .subscribe(v => this.productId = v.get('id'))
   }
@@ -26,6 +27,13 @@ export class ProductViewComponent  implements OnInit {
   }
 
   addToCart(){
-    
+    if (this.product !== undefined) {
+      let newCartItem:ProductCartItem = {
+        ...this.product,
+        quantity: this.quantity
+      }
+      this.cart.addItem(newCartItem);
+    }
   }
+  
 }

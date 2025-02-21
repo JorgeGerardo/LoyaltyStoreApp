@@ -26,6 +26,7 @@ export { CustomerProduct } from './models/CustomerProduct';
 export { StoreInventary } from './models/StoreInventary';
 export { StoreInventaryCreateDTO } from './models/StoreInventary';
 export { StoreInventaryUpdateDTO } from './models/StoreInventary';
+export { StoreInventaryView } from './models/StoreInventary';
 
 
 export { Product } from './models/Product';

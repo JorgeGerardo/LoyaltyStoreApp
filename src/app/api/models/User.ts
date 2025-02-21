@@ -12,3 +12,8 @@ export interface User extends BaseModel {
     role: Role;
 }
 
+export interface UserLoginDTO {
+    email: string;
+    password: string;
+}
+

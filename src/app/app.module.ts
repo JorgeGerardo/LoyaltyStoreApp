@@ -11,6 +11,7 @@ import { ProductViewComponent } from './components/product-view/product-view.com
 import { CartViewerComponent } from './components/cart-viewer/cart-viewer.component';
 import { AuthInterctorInterceptor } from './Interceptor/auth-interctor.interceptor';
 import { StoreListComponent } from './components/store-list/store-list.component';
+import { StoreInventaryViewerComponent } from './components/store-inventary-viewer/store-inventary-viewer.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { StoreListComponent } from './components/store-list/store-list.component
     ProductViewComponent,
     CartViewerComponent,
     StoreListComponent,
+    StoreInventaryViewerComponent,
   ],
   imports: [
     BrowserModule,

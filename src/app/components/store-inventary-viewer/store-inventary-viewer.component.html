@@ -1,0 +1,28 @@
+<app-nav></app-nav>
+
+
+<div class="container mx-auto p-6">
+    <!-- Título de la sección -->
+    <h1 class="text-3xl font-semibold text-center mb-6">Inventario de Tienda</h1>
+  
+    <!-- Lista de inventario -->
+    <div class="space-y-4">
+      <div *ngFor="let item of inventary" class="flex items-center justify-between p-4 border rounded-lg shadow-lg">
+        <!-- Detalles del producto -->
+        <div class="flex items-center space-x-4">
+          <img [src]="item.image" alt="{{ item.title }}" class="w-16 h-16 object-cover rounded-md">
+          <div>
+            <h2 class="text-xl font-semibold">{{ item.title }}</h2>
+            <p [routerLink]="['/product', item.productId]" class="underline hover:cursor-pointer text-sm text-gray-500">Producto ID: {{ item.productId }}</p>
+            <p class="text-sm text-gray-500">Stock: {{ item.stock }}</p>
+          </div>
+        </div>
+  
+        <!-- Botón de Editar -->
+        <button (click)="editItem(item)" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+          Editar
+        </button>
+      </div>
+    </div>
+  </div>
+  

@@ -7,10 +7,10 @@
   
       <!-- BOTONES (Desktop) -->
       <div class="hidden md:flex space-x-4">
-        <a href="#" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md">Home</a>
+        <a routerLink="/product-viewer" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md">Home</a>
         <a href="#" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md">Products</a>
         <a href="#" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md">About</a>
-        <a href="#" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md">Contact</a>
+        <a [routerLink]="['/cart']" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md">Cart</a>
       </div>
   
       <!-- MENU HAMBURGUESA (Mobile) -->
@@ -26,10 +26,10 @@
   
     <!-- MENÚ DESPLEGABLE (Mobile) -->
     <div *ngIf="isOpen" class="md:hidden bg-blue-500">
-      <a href="#" class="block text-white px-4 py-2">Home</a>
+      <a routerLink="/product-viewer" class="block text-white px-4 py-2">Home</a>
       <a href="#" class="block text-white px-4 py-2">Products</a>
       <a href="#" class="block text-white px-4 py-2">About</a>
-      <a href="#" class="block text-white px-4 py-2">Contact</a>
+      <a [routerLink]="['/cart']" class="block text-white px-4 py-2">Cart</a>
     </div>
   </nav>
   

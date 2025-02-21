@@ -37,7 +37,6 @@ export class CartViewerComponent implements OnInit{
 }
 
   pay(){
-    let newSale = this.cart.getItems();
     this.sales.AddSale(this.cartItems).subscribe({
       next: () => {
         this.cart.removeAll();

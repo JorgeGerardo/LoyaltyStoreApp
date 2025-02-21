@@ -5,6 +5,7 @@ import { ProductViewerComponent } from './components/product-viewer/product-view
 import { loginActiveGuard } from './Guard/login-active.guard';
 import { ProductViewComponent } from './components/product-view/product-view.component';
 import { CartViewerComponent } from './components/cart-viewer/cart-viewer.component';
+import { StoreListComponent } from './components/store-list/store-list.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'product-viewer', component: ProductViewerComponent, canActivate: [loginActiveGuard]},
   {path: 'product/:id', component: ProductViewComponent, canActivate: [loginActiveGuard]},
   {path: 'cart', component: CartViewerComponent, canActivate: [loginActiveGuard]},
+  {path: 'store-list', component: StoreListComponent, canActivate: [loginActiveGuard]},
   {path: '**', pathMatch:'full', redirectTo: 'login'},
 ];
 

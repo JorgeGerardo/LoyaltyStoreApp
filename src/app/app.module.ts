@@ -10,6 +10,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { ProductViewComponent } from './components/product-view/product-view.component';
 import { CartViewerComponent } from './components/cart-viewer/cart-viewer.component';
 import { AuthInterctorInterceptor } from './Interceptor/auth-interctor.interceptor';
+import { StoreListComponent } from './components/store-list/store-list.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AuthInterctorInterceptor } from './Interceptor/auth-interctor.intercept
     NavComponent,
     ProductViewComponent,
     CartViewerComponent,
+    StoreListComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { ProductViewerComponent } from './components/product-viewer/product-viewer.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ProductViewComponent } from './components/product-view/product-view.component';
+import { CartViewerComponent } from './components/cart-viewer/cart-viewer.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { ProductViewComponent } from './components/product-view/product-view.com
     ProductViewerComponent,
     NavComponent,
     ProductViewComponent,
+    CartViewerComponent,
   ],
   imports: [
     BrowserModule,

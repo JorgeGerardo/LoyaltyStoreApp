@@ -1,0 +1,47 @@
+<app-nav></app-nav>
+<main class="container mx-auto p-6">
+    <h1 class="text-3xl font-semibold mb-6 text-center">Carrito de Compras</h1>
+  
+    <div *ngIf="cartItems.length > 0; else emptyCart">
+      <div *ngFor="let item of cartItems" class="bg-white rounded-lg shadow-md mb-4 p-4 flex items-center justify-between">
+        
+        <!-- Imagen del producto -->
+        <img [src]="item.image" alt="{{ item.title }}" class="w-20 h-20 object-cover mr-4 rounded-md">
+        
+        <!-- Detalles del producto -->
+        <div class="flex-1">
+          <h2 class="text-xl font-semibold">{{ item.title }}</h2>
+          <p class="text-gray-600">{{ item.description }}</p>
+          <p class="text-lg font-bold text-blue-600">${{ item.price }}</p>
+        </div>
+  
+        <!-- Controles de cantidad -->
+        <div class="flex items-center space-x-4">
+          <input [(ngModel)]="item.quantity" (ngModelChange)="updateQuantity(item, item.quantity)" 
+                 type="number" min="1" class="w-16 p-2 border rounded-md text-center" />
+  
+          <!-- Botón para eliminar producto -->
+          <button (click)="removeItem(item)" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">
+            Eliminar
+          </button>
+        </div>
+      </div>
+  
+      <!-- Total -->
+      <div class="flex justify-between items-center mt-6">
+        <h2 class="text-xl font-bold">Total: ${{ total() }}</h2>
+        <button class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600">Proceder al pago</button>
+      </div>
+    </div>
+  
+    <!-- Mensaje si el carrito está vacío -->
+    <ng-template #emptyCart>
+      <div class="text-center">
+        <p class="text-2xl font-semibold text-gray-500">¡Tu carrito está vacío!</p>
+        <button class="mt-4 bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600">
+          Volver a la tienda
+        </button>
+      </div>
+    </ng-template>
+  </main>
+  

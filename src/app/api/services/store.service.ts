@@ -7,12 +7,9 @@ import { Store, StoreCreateDto, StoreUpdateDto } from "../models";
   providedIn: 'root'
 })
 export class StoreService extends GenericEndpointController<Store, StoreCreateDto, StoreUpdateDto> {
-
-  constructor(private http:HttpClient) { 
+  constructor(http:HttpClient) { 
     super(http);
+    this.rootUrl += "/Store"
   }
-
-
-
 
 }

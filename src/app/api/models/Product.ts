@@ -19,5 +19,5 @@ export interface ProductUpdateDto extends Partial<Product> {
 }
 
 export interface ProductCartItem extends Product {
-    auantity: number;
+    quantity: number;
 }

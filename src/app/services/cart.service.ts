@@ -27,4 +27,24 @@ export class CartService {
   getItems(){
     return this.cartItems;
   }
+
+  removeAll(){
+    this.cartItems = [];
+  }
+
+
+  updateState(newCartItem:ProductCartItem){
+    const existingItem = this.cartItems.find(product => product.id === newCartItem.id);
+
+    if (existingItem)
+      existingItem.quantity = newCartItem.quantity;
+  }
+
+  deleteItem(newCartItem:ProductCartItem){
+    let index = this.cartItems.findIndex(i => i.id === newCartItem.id);
+
+    if (index > -1) {
+      this.cartItems.splice(index, 1);
+    }
+  }
 }

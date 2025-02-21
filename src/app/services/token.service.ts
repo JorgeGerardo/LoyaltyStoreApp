@@ -7,11 +7,14 @@ import { jwtDecode, JwtPayload } from 'jwt-decode';
 export class TokenService {
   constructor() {}
   private TokenName = 'PlanifyToken';
+  private UserId = 'UserId';
 
   saveToken(token: string) {
     localStorage.setItem(this.TokenName, token);
-    console.log("Su token es:");
-    console.log(token);
+  }
+
+  saveUserId(userId: number) {
+    localStorage.setItem(this.UserId, userId.toString());
   }
 
   getToken(): string | null {
@@ -21,6 +24,14 @@ export class TokenService {
     }
 
     return localStorage.getItem(this.TokenName);
+  }
+
+  getUserId(): number | null {
+    let userId = localStorage.getItem(this.UserId);
+    if (userId)
+      return parseInt(userId, 10);
+
+    return null;
   }
 
   removeToken(){

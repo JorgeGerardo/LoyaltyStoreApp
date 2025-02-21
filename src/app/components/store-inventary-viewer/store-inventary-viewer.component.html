@@ -19,7 +19,9 @@
         </div>
   
         <!-- Botón de Editar -->
-        <button (click)="editItem(item)" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+        <button (click)="editItem(item)" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+          [routerLink]="['/store-inventary-edit', item.stockId]"
+        >
           Editar
         </button>
       </div>

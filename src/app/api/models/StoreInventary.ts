@@ -19,6 +19,7 @@ export interface StoreInventaryUpdateDTO extends BaseModel {
 }
 
 export interface StoreInventaryView {
+    stockId: number;
     title: string;
     image: string;
     productId: number;

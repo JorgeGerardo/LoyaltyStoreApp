@@ -1,0 +1,50 @@
+<div *ngIf="product; else NotExist" class="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+    <div class="max-w-6xl w-full bg-white rounded-lg shadow-md p-6 md:flex md:items-center md:space-x-8">
+      <!-- Imagen del producto -->
+      <div class="md:w-1/2">
+        <img [src]="product.image" alt="{{ product.title }}" class="w-full h-auto object-cover rounded-lg shadow-lg">
+      </div>
+  
+      <!-- Detalles del producto -->
+      <div class="md:w-1/2 mt-6 md:mt-0">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">{{ product.title }}</h1>
+        <p class="text-lg text-gray-600 mb-4">{{ product.description }}</p>
+        <p class="text-2xl font-semibold text-blue-600 mb-6">${{ product.price }}</p>
+  
+        <!-- Controles de cantidad -->
+        <div class="flex items-center space-x-4 mb-6">
+          <button (click)="quantity = quantity > 1 ? quantity - 1 : 1" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition duration-200">
+            -
+          </button>
+          <input [(ngModel)]="quantity" type="number" min="1" class="w-16 text-center py-2 border border-gray-300 rounded-lg" />
+          <button (click)="quantity = quantity + 1" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition duration-200">
+            +
+          </button>
+        </div>
+  
+        <!-- Botones de acción -->
+        <div class="flex items-center space-x-4">
+          <button class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200">
+            Comprar ahora
+          </button>
+          <button (click)="addToCart()" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition duration-200">
+            Añadir al carrito
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<ng-template #NotExist>
+  <div class="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+    <div class="max-w-lg w-full bg-white rounded-lg shadow-md p-6 text-center">
+      <h2 class="text-3xl font-bold text-gray-800 mb-4">Producto no encontrado</h2>
+      <p class="text-lg text-gray-600 mb-6">Lo sentimos, no pudimos encontrar el producto que estás buscando.</p>
+      
+      <button routerLink="/product-viewer" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200">
+        Volver a la lista de productos
+      </button>
+    </div>
+  </div>
+</ng-template>

@@ -7,6 +7,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
 import { ProductViewerComponent } from './components/product-viewer/product-viewer.component';
 import { NavComponent } from './components/nav/nav.component';
+import { ProductViewComponent } from './components/product-view/product-view.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { NavComponent } from './components/nav/nav.component';
     LoginComponent,
     ProductViewerComponent,
     NavComponent,
+    ProductViewComponent,
   ],
   imports: [
     BrowserModule,

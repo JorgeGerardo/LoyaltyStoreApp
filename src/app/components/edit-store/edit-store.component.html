@@ -1,1 +1,51 @@
-<p>edit-store works!</p>
+<app-nav></app-nav>
+
+<div class="container mx-auto p-6">
+    <h1 class="text-3xl font-semibold text-center mb-6">Actualizar Tienda</h1>
+  
+    <div *ngIf="dto" class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
+      <form (ngSubmit)="updateStore()">
+        <div class="space-y-4">
+
+
+        <div>
+            <label for="sucursal" class="block text-sm font-medium text-gray-700">Sucursal</label>
+            <input
+              id="sucursal"
+              [(ngModel)]="dto.sucursal"
+              name="sucursal"
+              type="text"
+              class="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Nombre de la sucursal"
+              required
+            />
+          </div>
+  
+          <div>
+            <label for="address" class="block text-sm font-medium text-gray-700">Dirección</label>
+            <input
+              id="address"
+              [(ngModel)]="dto.address"
+              name="address"
+              type="text"
+              class="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Dirección de la tienda"
+              required
+            />
+          </div>
+  
+          <button
+            type="submit"
+            class="w-full py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none"
+          >
+            Actualizar
+          </button>
+        </div>
+      </form>
+    </div>
+  
+    <div *ngIf="!dto" class="text-center text-gray-500">
+      <p>Cargando la información de la tienda...</p>
+    </div>
+  </div>
+  

@@ -22,8 +22,6 @@ export class CartService {
       existingItem.quantity += newCartItem.quantity;
     else
       this.cartItems.push(newCartItem);
-
-    // console.log(this.cartItems); // Solo para ver el carrito actualizado    
   }
 
   getItems(){

@@ -10,6 +10,7 @@ export const loginActiveGuard: CanActivateFn = (route, state) => {
   if (!tokenService.isTokenExpired(token))
     return true;
   
+  alert('Inicie sesión');
   router.navigate(['/login']);
   return false;
 };

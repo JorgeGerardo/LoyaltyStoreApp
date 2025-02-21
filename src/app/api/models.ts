@@ -31,6 +31,7 @@ export { StoreInventaryUpdateDTO } from './models/StoreInventary';
 export { Product } from './models/Product';
 export { ProductCreateDto } from './models/Product';
 export { ProductUpdateDto } from './models/Product';
+export { ProductCartItem } from './models/Product';
 
 
 export { InventaryTransaction } from './models/InventaryTransaction';

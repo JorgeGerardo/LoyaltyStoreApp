@@ -17,3 +17,7 @@ export interface ProductCreateDto {
 export interface ProductUpdateDto extends Partial<Product> {
     id?: number;
 }
+
+export interface ProductCartItem extends Product {
+    auantity: number;
+}

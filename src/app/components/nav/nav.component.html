@@ -1,0 +1,35 @@
+<nav class="bg-blue-600 p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <!-- LOGO -->
+      <a href="/" class="text-white text-2xl font-bold">
+        LoyaltyStore
+      </a>
+  
+      <!-- BOTONES (Desktop) -->
+      <div class="hidden md:flex space-x-4">
+        <a href="#" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md">Home</a>
+        <a href="#" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md">Products</a>
+        <a href="#" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md">About</a>
+        <a href="#" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md">Contact</a>
+      </div>
+  
+      <!-- MENU HAMBURGUESA (Mobile) -->
+      <button
+        class="md:hidden text-white focus:outline-none"
+        (click)="toggleMenu()"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  
+    <!-- MENÚ DESPLEGABLE (Mobile) -->
+    <div *ngIf="isOpen" class="md:hidden bg-blue-500">
+      <a href="#" class="block text-white px-4 py-2">Home</a>
+      <a href="#" class="block text-white px-4 py-2">Products</a>
+      <a href="#" class="block text-white px-4 py-2">About</a>
+      <a href="#" class="block text-white px-4 py-2">Contact</a>
+    </div>
+  </nav>
+  

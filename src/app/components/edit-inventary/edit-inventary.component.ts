@@ -12,7 +12,13 @@ import { StoreInventaryService } from 'src/app/api/services/store-inventary.serv
 })
 export class EditInventaryComponent implements OnInit{
   stockInventaryId = 0;
-  Inventary:StoreInventary | undefined = undefined
+  CurrentInventary:StoreInventary = {
+    id: 0,
+    productId: 0,
+    stock: 0,
+    storeId: 0
+  }
+
   productImage = "";
   productTitle = "No title";
 
@@ -23,7 +29,7 @@ export class EditInventaryComponent implements OnInit{
     })
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.inventary.getById(this.stockInventaryId).pipe(
       tap((v) => {
         this.productS.getById(v.id).subscribe(v => {
@@ -33,10 +39,24 @@ export class EditInventaryComponent implements OnInit{
       })
     )
       .subscribe(data => {
-        this.Inventary = data;
+        this.CurrentInventary = data;
         console.log(data);
       });
   }
 
+  confirmEdit(){
+    if (this.CurrentInventary === undefined)
+      return;
+    
+    this.inventary.update(this.stockInventaryId, {
+      id: this.stockInventaryId,
+      productId: this.CurrentInventary?.productId,
+      stock: this.CurrentInventary?.stock,
+      storeId: this.CurrentInventary?.storeId
+    }).subscribe({
+      next: () => alert("Se realizo correctamente"),
+      error: () => alert("Ha ocurrido un error")
+    });
+  }
 
 }

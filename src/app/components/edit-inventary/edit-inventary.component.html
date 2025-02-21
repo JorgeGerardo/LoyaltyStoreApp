@@ -1,1 +1,44 @@
-<p>edit-inventary works!</p>
+<app-nav></app-nav>
+
+<div class="container mx-auto p-6">
+    <!-- Título de la sección -->
+    <h1 class="text-3xl font-semibold text-center mb-6">Editar Inventario</h1>
+  
+    <!-- Formulario de edición -->
+    <div *ngIf="CurrentInventary" class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
+      <div class="flex flex-col items-center space-y-4">
+        <!-- Imagen del producto -->
+        <img [src]="productImage" alt="{{ productTitle }}" class="w-32 h-32 object-cover rounded-md">
+  
+        <!-- Título del producto -->
+        <h2 class="text-2xl font-semibold text-center">{{ productTitle }}</h2>
+  
+        <!-- Campo de edición de stock -->
+        <div class="w-full">
+          <label for="stock" class="block text-sm font-medium text-gray-700">Cantidad en Stock</label>
+          <input
+            id="stock"
+            [(ngModel)]="CurrentInventary.stock"
+            type="number"
+            min="0"
+            class="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Cantidad"
+          />
+        </div>
+  
+        <!-- Botón de confirmación -->
+        <button
+          (click)="confirmEdit()"
+          class="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 focus:outline-none"
+        >
+          Confirmar
+        </button>
+      </div>
+    </div>
+  
+    <!-- Mensaje cuando no se encuentra el inventario -->
+    <div *ngIf="!CurrentInventary" class="text-center text-gray-500">
+      <p>El producto no existe o no se encontró.</p>
+    </div>
+  </div>
+  

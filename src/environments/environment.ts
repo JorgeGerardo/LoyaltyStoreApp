@@ -1,3 +1,3 @@
 export const environment = {
-    apiUrl: 'TODO:Pendiente'
+    apiUrl: 'https://localhost:7155/api'
 };

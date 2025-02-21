@@ -11,11 +11,11 @@ export class StoreListComponent implements OnInit{
 
   stores:Store[] = []
 
-  constructor(private store:StoreService) {
+  constructor(private storeService:StoreService) {
     
   }
   ngOnInit(): void {
-    this.store.getAll().subscribe(v => this.stores = v);
+    this.storeService.getAll().subscribe(v => this.stores = v);
   }
 
   check(){
@@ -23,10 +23,14 @@ export class StoreListComponent implements OnInit{
   }
 
   editStore(id:number){
-
+    //TODO: Debería ser un routerlink
   }
 
   deleteStore(id:number){
-
+    this.storeService.delete(id).subscribe({
+      next: () => {
+        this.stores = this.stores.filter(store => store.id !== id);      
+      }
+    })
   }
 }

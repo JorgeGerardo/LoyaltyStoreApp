@@ -24,7 +24,7 @@ export abstract class GenericEndpointController<T, TCreateDTO, TUpdateDTO> {
 
   //Post & Put
   post(createDTO:TCreateDTO){
-    return this.httpBase.post(`${this.rootUrl}`, createDTO);
+    return this.httpBase.post<T>(`${this.rootUrl}`, createDTO);
   }
 
   update(id:number, updateDTO:TUpdateDTO){

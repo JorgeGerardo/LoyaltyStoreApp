@@ -7,46 +7,60 @@ import { ProductService } from 'src/app/api/services/product.service';
   templateUrl: './product-viewer.component.html',
   styleUrls: ['./product-viewer.component.scss']
 })
-export class ProductViewerComponent implements OnInit{
-  products:Product[] = [];
-  constructor(private store:ProductService) { }
+export class ProductViewerComponent implements OnInit {
+  products: Product[] = [];
+  
+  currentPage: number = 1;
+  itemsPerPage: number = 16;
 
-  ngOnInit(): void {
-    this.store.getAll().subscribe(products => this.products = products);
+  totalItems: number = 0;
+  totalPages: number = 0;
+
+  constructor(private store: ProductService) {}
+
+  ngOnInit() {
+    this.loadTotalItems();
   }
 
-  get(){
-    this.store.getAll().subscribe(c => console.log(c));
+  loadTotalItems() {
+    this.store.count().subscribe(total => {
+      this.totalItems = total;
+      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+      this.loadProducts(); // Carga los productos después de obtener el total
+    });
   }
 
-  post(){
-    // this.store.post({
-    //   address: '444',
-    //   sucursal: "Walmart 444",
-    // }).subscribe(console.log);
+  loadProducts() {
+    this.store.getAll(this.currentPage, this.itemsPerPage)
+      .subscribe(response => {
+        this.products = response;
+        console.log('Productos cargados:', this.products);
+      });
   }
 
-  update(){
-    // this.store.update(2, {
-    //   address: 'Santa Catarina, NL',
-    //   sucursal: "Walmart 222",
-    //   id: 2
-    // }).subscribe(v => console.log(v));
+  goToPage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.loadProducts();
+    }
   }
 
-  getById(){
-    // this.store.getById(2).subscribe(v => {
-    //   console.log(v.id);
-    //   console.log(v.address);
-    //   console.log(v.sucursal);
-    // });
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.loadProducts();
+    }
   }
 
-  count(){
-    this.store.count().subscribe(console.log);
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.loadProducts();
+    }
   }
 
-  remove(){
-    this.store.delete(3).subscribe(console.log);
+  get totalPagesArray(): number[] {
+    return Array(this.totalPages).fill(0).map((_, i) => i + 1);
   }
+
 }

@@ -15,6 +15,7 @@ import { StoreInventaryViewerComponent } from './components/store-inventary-view
 import { EditInventaryComponent } from './components/edit-inventary/edit-inventary.component';
 import { AddProductToStoreComponent } from './components/add-product-to-store/add-product-to-store.component';
 import { EditStoreComponent } from './components/edit-store/edit-store.component';
+import { AddStoreComponent } from './components/add-store/add-store.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { EditStoreComponent } from './components/edit-store/edit-store.component
     EditInventaryComponent,
     AddProductToStoreComponent,
     EditStoreComponent,
+    AddStoreComponent,
   ],
   imports: [
     BrowserModule,

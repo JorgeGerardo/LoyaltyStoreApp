@@ -10,6 +10,7 @@ import { StoreInventaryViewerComponent } from './components/store-inventary-view
 import { EditInventaryComponent } from './components/edit-inventary/edit-inventary.component';
 import { AddProductToStoreComponent } from './components/add-product-to-store/add-product-to-store.component';
 import { EditStoreComponent } from './components/edit-store/edit-store.component';
+import { AddStoreComponent } from './components/add-store/add-store.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'store-inventary-edit/:storeId', component: EditInventaryComponent, canActivate: [loginActiveGuard]},
   {path: 'add-stock/:storeId', component: AddProductToStoreComponent, canActivate: [loginActiveGuard]},
   {path: 'edit-store/:storeId', component: EditStoreComponent, canActivate: [loginActiveGuard]},
+  {path: 'add-store', component: AddStoreComponent, canActivate: [loginActiveGuard]},
   {path: '**', pathMatch:'full', redirectTo: 'login'},
 ];
 

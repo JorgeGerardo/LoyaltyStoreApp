@@ -16,4 +16,8 @@ export class StoreInventaryService extends GenericEndpointController<StoreInvent
     return this.http.get<StoreInventaryView[]>(`${this.rootUrl}/store-inventary/${storeId}`);
   }
 
+  addNewStock(storeId:number, dto:StoreInventaryCreateDTO){
+    return this.http.put(`${this.rootUrl}/add-product-store/${storeId}`, dto);
+  }
+
 }

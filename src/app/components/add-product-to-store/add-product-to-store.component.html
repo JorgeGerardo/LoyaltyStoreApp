@@ -1,1 +1,58 @@
-<p>add-product-to-store works!</p>
+<app-nav></app-nav>
+<div class="container mx-auto p-6">
+    <!-- Título de la sección -->
+    <h1 class="text-3xl font-semibold text-center mb-6">Añadir Producto a la Sucursal</h1>
+  
+    <!-- Formulario para seleccionar el producto y la cantidad -->
+    <div *ngIf="availableProducts.length > 0" class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
+      <form (ngSubmit)="addProductToStore()">
+        <div class="space-y-4">
+          <!-- Combo box para seleccionar el producto -->
+          <div>
+            <label for="product" class="block text-sm font-medium text-gray-700">Selecciona un Producto</label>
+            <select
+              id="product"
+              [(ngModel)]="selectedProductId"
+              name="product"
+              class="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              required
+            >
+              <option value="" disabled>Selecciona un producto</option>
+              <option *ngFor="let product of availableProducts" [value]="product.id">
+                {{ product.title }}
+              </option>
+            </select>
+          </div>
+  
+          <!-- Campo para seleccionar la cantidad -->
+          <div>
+            <label for="quantity" class="block text-sm font-medium text-gray-700">Cantidad</label>
+            <input
+              id="quantity"
+              [(ngModel)]="quantity"
+              name="quantity"
+              type="number"
+              min="1"
+              class="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Cantidad"
+              required
+            />
+          </div>
+  
+          <!-- Botón de enviar -->
+          <button
+            type="submit"
+            class="w-full py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none"
+          >
+            Añadir Producto
+          </button>
+        </div>
+      </form>
+    </div>
+  
+    <!-- Mensaje cuando no haya productos disponibles -->
+    <div *ngIf="availableProducts.length === 0" class="text-center text-gray-500">
+      <p>No hay productos disponibles para agregar a la sucursal.</p>
+    </div>
+  </div>
+  

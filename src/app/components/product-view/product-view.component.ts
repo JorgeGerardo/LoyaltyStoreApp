@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, inject, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product, ProductCartItem } from 'src/app/api/models';
 import { ProductService } from 'src/app/api/services/product.service';
 import { CartService } from 'src/app/services/cart.service';
@@ -14,7 +14,9 @@ export class ProductViewComponent  implements OnInit {
   product:Product | undefined = undefined;
   quantity = 1;
   
-  constructor(private activedRoute:ActivatedRoute, private productService:ProductService, private cart:CartService){
+  constructor(private activedRoute:ActivatedRoute, private productService:ProductService, private cart:CartService,
+    private router:Router
+  ){
     this.activedRoute.paramMap
       .subscribe(v => this.productId = v.get('id'))
   }
@@ -24,6 +26,11 @@ export class ProductViewComponent  implements OnInit {
       this.productService.getById(parseInt(this.productId, 10))
         .subscribe(product => this.product = product);
     }
+  }
+
+  buyNow(){
+    this.addToCart();
+    this.router.navigate(['/cart']);
   }
 
   addToCart(){

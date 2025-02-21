@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { UserLoginDTO } from 'src/app/api/models';
+import { UserService } from 'src/app/api/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -6,14 +8,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  loginData = {
-    email: '',
-    password: '',
+  constructor(private user:UserService) { }
+  
+
+  loginData:UserLoginDTO = {
+    email: 'jorguito@example.com',
+    password: 'jorguito',
   };
 
 
   onSubmit(){
-    console.log(this.loginData.email);
-    console.log(this.loginData.password);
+    this.user.login(this.loginData).subscribe({
+      error: () => alert("Error al iniciar sesión, verifique sus datos")
+    });
   }
 }
